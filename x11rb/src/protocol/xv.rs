@@ -10,7 +10,6 @@ where
 }
 
 pub fn grab_port<Conn, A>(conn: &Conn, port: Port, time: A) -> Result<Cookie<'_, Conn, GrabPortReply>, ConnectionError>
-where
     Conn: RequestConnection + ?Sized,
     A: Into<xproto::Timestamp>,
 {

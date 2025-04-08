@@ -1,12 +1,3 @@
-// This file contains generated code. Do not edit directly.
-// To regenerate this, run 'make'.
-
-//! Bindings to the `Xv` X11 extension.
-
-#![allow(clippy::too_many_arguments)]
-
-pub use x11rb_protocol::protocol::xv::*;
-
 /// Get the major opcode of this extension
 fn major_opcode<Conn: RequestConnection + ?Sized>(conn: &Conn) -> Result<u8, ConnectionError> {
     let info = conn.extension_information(X11_EXTENSION_NAME)?;

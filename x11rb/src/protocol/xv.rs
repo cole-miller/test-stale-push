@@ -5,28 +5,6 @@
 
 #![allow(clippy::too_many_arguments)]
 
-#[allow(unused_imports)]
-use std::borrow::Cow;
-#[allow(unused_imports)]
-use std::convert::TryInto;
-#[allow(unused_imports)]
-use crate::utils::RawFdContainer;
-#[allow(unused_imports)]
-use crate::x11_utils::{Request, RequestHeader, Serialize, TryParse, TryParseFd};
-use std::io::IoSlice;
-use crate::connection::RequestConnection;
-#[allow(unused_imports)]
-use crate::connection::Connection as X11Connection;
-#[allow(unused_imports)]
-use crate::cookie::{Cookie, CookieWithFds, VoidCookie};
-use crate::errors::ConnectionError;
-#[allow(unused_imports)]
-use crate::errors::ReplyOrIdError;
-#[allow(unused_imports)]
-use super::shm;
-#[allow(unused_imports)]
-use super::xproto;
-
 pub use x11rb_protocol::protocol::xv::*;
 
 /// Get the major opcode of this extension

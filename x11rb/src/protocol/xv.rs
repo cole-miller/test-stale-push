@@ -1,17 +1,3 @@
-    Conn: RequestConnection + ?Sized,
-    A: Into<xproto::Timestamp>,
-{
-    let time: xproto::Timestamp = time.into();
-    let request0 = GrabPortRequest {
-        port,
-        time,
-    };
-    let (bytes, fds) = request0.serialize(major_opcode(conn)?);
-    let slices = [IoSlice::new(&bytes[0])];
-    assert_eq!(slices.len(), bytes.len());
-    conn.send_request_with_reply(&slices, fds)
-}
-
 pub fn ungrab_port<Conn, A>(conn: &Conn, port: Port, time: A) -> Result<VoidCookie<'_, Conn>, ConnectionError>
 where
     Conn: RequestConnection + ?Sized,

@@ -14,19 +14,6 @@ fn major_opcode<Conn: RequestConnection + ?Sized>(conn: &Conn) -> Result<u8, Con
     Ok(info.major_opcode)
 }
 
-pub fn query_adaptors<Conn>(conn: &Conn, window: xproto::Window) -> Result<Cookie<'_, Conn, QueryAdaptorsReply>, ConnectionError>
-where
-    Conn: RequestConnection + ?Sized,
-{
-    let request0 = QueryAdaptorsRequest {
-        window,
-    };
-    let (bytes, fds) = request0.serialize(major_opcode(conn)?);
-    let slices = [IoSlice::new(&bytes[0])];
-    assert_eq!(slices.len(), bytes.len());
-    conn.send_request_with_reply(&slices, fds)
-}
-
 pub fn query_encodings<Conn>(conn: &Conn, port: Port) -> Result<Cookie<'_, Conn, QueryEncodingsReply>, ConnectionError>
 where
     Conn: RequestConnection + ?Sized,

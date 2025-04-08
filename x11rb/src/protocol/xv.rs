@@ -1,15 +1,3 @@
-where
-    Conn: RequestConnection + ?Sized,
-{
-    let request0 = QueryEncodingsRequest {
-        port,
-    };
-    let (bytes, fds) = request0.serialize(major_opcode(conn)?);
-    let slices = [IoSlice::new(&bytes[0])];
-    conn.send_request_with_reply(&slices, fds)
-}
-
-pub fn grab_port<Conn, A>(conn: &Conn, port: Port, time: A) -> Result<Cookie<'_, Conn, GrabPortReply>, ConnectionError>
     Conn: RequestConnection + ?Sized,
     A: Into<xproto::Timestamp>,
 {
